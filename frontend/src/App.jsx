@@ -13,6 +13,7 @@ import AuthorityDashboard from "./pages/AuthorityDashboard";
 import NationalAlerts from "./pages/NationalAlerts";
 import ResearchFindings from "./pages/ResearchFindings";
 import CommandCenter from "./pages/CommandCenter";
+import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
   path="/timeline"
   element={<VisitTimeline />}
 />
+
 
         <Route
           path="/register"
@@ -41,7 +43,13 @@ function App() {
 />
 <Route
   path="/research-dashboard"
-  element={<ResearchDashboard />}
+  element={
+    <ProtectedRoute
+      allowedRole="research_scholar"
+    >
+      <ResearchDashboard />
+    </ProtectedRoute>
+  }
 />
         <Route
   path="/analytics"
@@ -54,7 +62,13 @@ function App() {
 />
 <Route
   path="/authority-dashboard"
-  element={<AuthorityDashboard />}
+  element={
+    <ProtectedRoute
+      allowedRole="authority"
+    >
+      <AuthorityDashboard />
+    </ProtectedRoute>
+  }
 />
 <Route
   path="/research-findings"
@@ -67,9 +81,15 @@ function App() {
 
         {/* Dashboard */}
         <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
+  path="/dashboard"
+  element={
+    <ProtectedRoute
+      allowedRole="doctor"
+    >
+      <Dashboard />
+    </ProtectedRoute>
+  }
+/>
 
         {/* Case Reporting */}
         <Route

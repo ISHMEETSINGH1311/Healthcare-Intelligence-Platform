@@ -123,36 +123,91 @@ setAlerts(
           color:"white",
         }}
       >
-       <h1
+       <div
   style={{
-    fontSize: "48px",
-    marginBottom: "20px",
-    lineHeight: "1.2",
+    display: "flex",
+    justifyContent:
+      "space-between",
+    alignItems: "center",
+    marginBottom: "40px",
+    padding: "30px",
+    borderRadius: "20px",
+   background:
+"linear-gradient(135deg,#0f172a,#1e293b,#2563eb)",
+    boxShadow:
+      "0 10px 30px rgba(0,0,0,0.3)",
   }}
 >
-  Healthcare Intelligence
-  <br />
-  Dashboard
-</h1>
+  <div>
+    <div
+  style={{
+    display: "flex",
+    gap: "15px",
+    flexWrap: "wrap",
+    marginBottom: "30px",
+  }}
+>
+  <div style={statusCard}>
+    🟢 System Online
+  </div>
 
-        <br />
+  <div style={statusCard}>
+    🔒 Secure Network
+  </div>
 
-        <button
-          onClick={() =>
-            navigate("/case-report")
-          }
-          style={{
-            padding: "12px 24px",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-            marginBottom: "30px",
-            fontSize: "16px",
-          }}
-        >
-          Submit New Case
-        </button>
+  <div style={statusCard}>
+    🤖 AI Active
+  </div>
 
+  <div style={statusCard}>
+    📡 Real-Time Monitoring
+  </div>
+</div>
+    <h1
+      style={{
+        fontSize: "56px",
+fontWeight: "800",
+lineHeight: "1",
+        margin: 0,
+      }}
+    >
+      🏥 HealthIntel AI
+    </h1>
+
+    <p
+      style={{
+        color: "#dbeafe",
+marginTop: "12px",
+        fontSize: "18px",
+      }}
+    >
+      AI-Powered Healthcare Monitoring,
+Drug Safety Intelligence,
+Research Analytics & National Surveillance
+    </p>
+  </div>
+
+  <button
+    onClick={() =>
+      navigate("/case-report")
+    }
+    style={{
+      padding:
+        "14px 28px",
+      border: "none",
+      borderRadius:
+        "12px",
+      cursor: "pointer",
+     background:
+"linear-gradient(135deg,#0f172a,#1e293b,#2563eb)",
+      color: "white",
+      fontWeight: "bold",
+    }}
+  >
+    ➕ Submit New Case
+  </button>
+</div>
+          
         <div
           style={{
             display: "flex",
@@ -164,9 +219,9 @@ setAlerts(
             style={{
               border: "1px solid #334155",
 background:
-"linear-gradient(135deg,#1e293b,#334155)",
+"linear-gradient(135deg,#0f172a,#1e293b,#2563eb)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-              borderRadius: "12px",
+              borderRadius: "16px",
               padding: "20px",
               width: "280px",
               textAlign: "center",
@@ -176,7 +231,9 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
 
             <h1
               style={{
-                fontSize: "48px",
+              fontSize: "56px",
+fontWeight: "800",
+lineHeight: "1",
               }}
             >
               {totalCases}
@@ -186,7 +243,13 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
           <div
             style={{
               border: "1px solid #334155",
-background: "#1e293b",
+              transition: "all 0.3s ease",
+cursor: "pointer",
+background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
               borderRadius: "12px",
               padding: "20px",
@@ -209,13 +272,49 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                 : 0}
             </p>
           </div>
+          <div
+  style={{
+    border: "1px solid #334155",
+
+
+    background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
+    boxShadow:
+      "0 4px 15px rgba(0,0,0,0.2)",
+    borderRadius: "16px",
+    padding: "20px",
+    width: "280px",
+    textAlign: "center",
+  }}
+>
+  <h3>AI Predictions</h3>
+
+  <h1
+    style={{
+      fontSize: "56px",
+fontWeight: "800",
+lineHeight: "1",
+    }}
+  >
+    {predictionHistory.length}
+  </h1>
+</div>
 
           <div
             style={{
               border: "1px solid #334155",
-background: "#1e293b",
+              transition: "all 0.3s ease",
+cursor: "pointer",
+background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-              borderRadius: "12px",
+              borderRadius: "16px",
               padding: "20px",
               width: "420px",
               height: "400px",
@@ -324,7 +423,13 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                 key={item.id}
                 style={{
                   border: "1px solid #334155",
-background: "#1e293b",
+                  transition: "all 0.3s ease",
+cursor: "pointer",
+background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                   padding: "15px",
                   marginBottom: "10px",
@@ -378,7 +483,11 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                 key={index}
                 style={{
                   border: "1px solid #334155",
-background: "#1e293b",
+background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                   padding: "15px",
                   marginBottom: "10px",
@@ -411,9 +520,15 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
           <div
             style={{
               border: "1px solid #334155",
-background: "#1e293b",
+              transition: "all 0.3s ease",
+cursor: "pointer",
+background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-              borderRadius: "12px",
+              borderRadius: "16px",
               padding: "20px",
               width: "700px",
               height: "400px",
@@ -431,16 +546,18 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                 />
 
                 <XAxis
-                  dataKey="region"
-                />
-
-                <YAxis />
+  dataKey="region"
+  tick={{
+    fill: "#ffffff",
+    fontSize: 14,
+  }}
+/>
 
                 <Tooltip />
 
                 <Bar
                   dataKey="count"
-                  fill="#00C49F"
+                  fill="#3b82f6"
                   radius={[10, 10, 0, 0]}
                 />
               </BarChart>
@@ -460,9 +577,14 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
           <div
             style={{
               border: "1px solid #334155",
-background: "#1e293b",
+              
+background:
+"rgba(30,41,59,0.85)",
+
+backdropFilter:
+"blur(15px)",
 boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-              borderRadius: "12px",
+              borderRadius: "16px",
               padding: "20px",
               width: "700px",
               height: "400px",
@@ -494,7 +616,15 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
   }}
 />
 
-                <YAxis />
+                <YAxis
+  tick={{
+    fill: "#ffffff",
+    fontSize: 14,
+  }}
+  axisLine={{
+    stroke: "#64748b",
+  }}
+/>
 
                 <Tooltip />
 
@@ -513,5 +643,16 @@ boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
     </Layout>
   );
 }
-
+const statusCard = {
+  background:
+    "rgba(255,255,255,0.08)",
+  backdropFilter:
+    "blur(12px)",
+  padding: "12px 20px",
+  borderRadius: "14px",
+  border:
+    "1px solid rgba(255,255,255,0.08)",
+  color: "white",
+  fontWeight: "600",
+};
 export default Dashboard;

@@ -5,11 +5,24 @@ import api from "../services/api";
 function Register() {
   const navigate = useNavigate();
 
+  const selectedRole =
+    localStorage.getItem("registerRole") ||
+    "doctor";
+
+  const roleNames = {
+    doctor: "Doctor",
+    research_scholar:
+      "Research Scholar",
+    authority: "Authority",
+    hospital_admin:
+      "Hospital Admin",
+  };
+
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
-    role: "doctor",
+    role: selectedRole,
   });
 
   const handleRegister = async (e) => {
@@ -23,8 +36,11 @@ function Register() {
 
       alert(response.data.message);
 
-      navigate("/");
+      localStorage.removeItem(
+        "registerRole"
+      );
 
+      navigate("/");
     } catch (error) {
       console.log(error);
       alert("Registration Failed");
@@ -43,7 +59,7 @@ function Register() {
     >
       <div
         style={{
-          width: "400px",
+          width: "420px",
           background: "#1e293b",
           padding: "40px",
           borderRadius: "20px",
@@ -55,13 +71,36 @@ function Register() {
           style={{
             color: "white",
             textAlign: "center",
-            marginBottom: "30px",
+            marginBottom: "10px",
           }}
         >
-          🏥 Register Doctor
+          🏥 Register{" "}
+          {
+            roleNames[
+              selectedRole
+            ]
+          }
         </h1>
 
-        <form onSubmit={handleRegister}>
+        <p
+          style={{
+            color: "#94a3b8",
+            textAlign: "center",
+            marginBottom: "25px",
+          }}
+        >
+          Creating a{" "}
+          {
+            roleNames[
+              selectedRole
+            ]
+          }{" "}
+          account
+        </p>
+
+        <form
+          onSubmit={handleRegister}
+        >
           <input
             placeholder="Name"
             onChange={(e) =>
@@ -70,17 +109,7 @@ function Register() {
                 name: e.target.value,
               })
             }
-            style={{
-              width: "100%",
-              padding: "14px",
-              marginBottom: "15px",
-              borderRadius: "10px",
-              border:
-                "1px solid #475569",
-              background: "#334155",
-              color: "white",
-              boxSizing: "border-box",
-            }}
+            style={inputStyle}
           />
 
           <input
@@ -91,17 +120,7 @@ function Register() {
                 email: e.target.value,
               })
             }
-            style={{
-              width: "100%",
-              padding: "14px",
-              marginBottom: "15px",
-              borderRadius: "10px",
-              border:
-                "1px solid #475569",
-              background: "#334155",
-              color: "white",
-              boxSizing: "border-box",
-            }}
+            style={inputStyle}
           />
 
           <input
@@ -114,47 +133,30 @@ function Register() {
                   e.target.value,
               })
             }
-            style={{
-              width: "100%",
-              padding: "14px",
-              marginBottom: "20px",
-              borderRadius: "10px",
-              border:
-                "1px solid #475569",
-              background: "#334155",
-              color: "white",
-              boxSizing: "border-box",
-            }}
+            style={inputStyle}
           />
 
           <button
             type="submit"
-            style={{
-              width: "100%",
-              padding: "14px",
-              border: "none",
-              borderRadius: "10px",
-              background: "#10b981",
-              color: "white",
-              fontWeight: "bold",
-              cursor: "pointer",
-            }}
+            style={buttonStyle}
           >
-            Register
+            Register{" "}
+            {
+              roleNames[
+                selectedRole
+              ]
+            }
           </button>
         </form>
 
         <button
-          onClick={() => navigate("/")}
+          onClick={() =>
+            navigate("/")
+          }
           style={{
-            width: "100%",
-            padding: "14px",
-            marginTop: "15px",
-            border: "none",
-            borderRadius: "10px",
+            ...buttonStyle,
             background: "#64748b",
-            color: "white",
-            cursor: "pointer",
+            marginTop: "15px",
           }}
         >
           Back to Login
@@ -163,5 +165,27 @@ function Register() {
     </div>
   );
 }
+
+const inputStyle = {
+  width: "100%",
+  padding: "14px",
+  marginBottom: "15px",
+  borderRadius: "10px",
+  border: "1px solid #475569",
+  background: "#334155",
+  color: "white",
+  boxSizing: "border-box",
+};
+
+const buttonStyle = {
+  width: "100%",
+  padding: "14px",
+  border: "none",
+  borderRadius: "10px",
+  background: "#10b981",
+  color: "white",
+  fontWeight: "bold",
+  cursor: "pointer",
+};
 
 export default Register;
